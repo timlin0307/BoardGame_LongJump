@@ -29,7 +29,7 @@ const reducer = (previousValue, currentValue) => previousValue + currentValue; /
 // Cannot use on() recursive but question() is okay
 var recursiveAsyncReadLine = function() {
     var result = [];
-    console.log(getDiceRand().sort((x,y) => x - y)); // Sort from small to big
+    console.log(getDiceRand().sort((x, y) => x - y)); // Sort from small to big
     console.log("Garder quels des?");
     rl.question('Garder num : ', function(answer) {
         result = answer.split(' ');
