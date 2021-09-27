@@ -3,7 +3,7 @@ html, body {
     background-color: rgb(0, 0, 0);
   }
   .main {
-    margin-top: 100px;
+    margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
     height: 800px;
@@ -14,17 +14,26 @@ html, body {
     margin-top: 25px;
   }
   p {
-    font-size: 18px;
+    margin-left: 45px;
+    text-align: left;
+    font-size: 20px;
     color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   label {
-    font-size: 50px;
+    font-size: 60px;
     margin-top: 25px;
     margin-bottom: 25px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     color: darkorange;
+    font-style: oblique;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  button {
+    height: 80px;
+    width: 300px;
   }
   embed {
     margin-top: 25px;
@@ -33,5 +42,4 @@ html, body {
     margin-right: auto;
     text-align: center;
   }
-  
   

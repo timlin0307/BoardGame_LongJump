@@ -11,8 +11,8 @@
             <form class="pure-form pure-g">
                 <div class="pure-u-1">
                     <label id="info1" for="info"></label>
-                    <label id="info2" for="info"></label>
                     <label id="info3" for="info"></label>
+                    <label id="info2" for="info"></label>
                 </div>
                 <div class="pure-u-1-5">
                     <p id="chiffre1">0</p>
@@ -67,7 +67,7 @@
                 document.querySelector("#chiffre5").textContent = dices_get[4];
                 document.querySelector("#info1").textContent = infoStr;
                 document.querySelector("#info2").textContent = warnStr;
-                document.querySelector("#info2").textContent = getScore();
+                document.querySelector("#info3").textContent = getScore();
                 document.querySelector("#form-button7").disabled = stepEnb;
                 event.preventDefault();
             })

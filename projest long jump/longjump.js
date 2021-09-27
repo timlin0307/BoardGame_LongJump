@@ -69,7 +69,6 @@ function detectFreeze(position) {
                     warnStr = "";
                     nextStep = 0;
                     stepEnb = true;
-                    stepEnb = true;
                 } else if(dices_sav.reduce(reducer) + dices[result[i] - 1] <= 8 && dices_cnt == 5) {
                     dices_enb[parseInt(result[i], 10) - 1] = true;
                     dices_sav[parseInt(result[i], 10) - 1] = dices[parseInt(result[i], 10) - 1];
