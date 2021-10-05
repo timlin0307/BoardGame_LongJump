@@ -8,6 +8,9 @@
     </head>
     <body>
         <div class="main">
+            <audio id="myAudio" preload="auto" autoplay="true" loop="loop" style="width:100%">
+                <source src="./music/Gaming background music 3.mp3" type="audio/mp3">
+            </audio>
             <form class="pure-form pure-form-stacked">
                 <label id="info1" for="info"></label>
                 <label id="info3" for="info"></label>
@@ -52,15 +55,24 @@
                     <button type="submit" id="form-button7" class="pure-button pure-button-primary" enabled>Go to next step</button>
                 </fieldset>
             </form>
+            <img id="img2" src="./music/volume1.PNG" style="display:block;width:50px;height:50px;position:absolute;bottom:0px;right:0px"/>
             <script src="./longjump2.js"></script>
             <script>
                 var mmode = 0;
+                var playMusic = true;
                 function dicesEnb() {
                     document.querySelector("#form-button1").disabled = dices_enb[0];
                     document.querySelector("#form-button2").disabled = dices_enb[1];
                     document.querySelector("#form-button3").disabled = dices_enb[2];
                     document.querySelector("#form-button4").disabled = dices_enb[3];
                     document.querySelector("#form-button5").disabled = dices_enb[4];
+                }
+                function dicesEnbTrue() {
+                    document.querySelector("#form-button1").disabled = true;
+                    document.querySelector("#form-button2").disabled = true;
+                    document.querySelector("#form-button3").disabled = true;
+                    document.querySelector("#form-button4").disabled = true;
+                    document.querySelector("#form-button5").disabled = true;
                 }
                 function dicesGet() {
                     document.querySelector("#form-button1").src = dices_str[0];
@@ -73,11 +85,7 @@
                     document.querySelector("#info1").textContent = infoStr;
                     document.querySelector("#info2").textContent = warnStr;
                 }
-                document.querySelector("#form-button1").disabled = true;
-                document.querySelector("#form-button2").disabled = true;
-                document.querySelector("#form-button3").disabled = true;
-                document.querySelector("#form-button4").disabled = true;
-                document.querySelector("#form-button5").disabled = true;
+                dicesEnbTrue();
                 document.querySelector("#form-button6").disabled = showEnb;
                 document.querySelector("#form-button7").disabled = stepEnb;
                 dicesInfo();
@@ -88,19 +96,18 @@
                         mmode = 1;
                         throwDiceRand();
                         detectFreeze('6');
-                        dicesEnb();
+                        dicesEnbTrue();
                         getDicesVal(1);
-                        dicesGet();
                     } else {
                         document.querySelector("#form-button6").textContent = "Throw the dices";
                         document.querySelector("#form-button6").disabled = true;
+                        mmode = 0;
                         throwDiceRand();
                         detectFreeze('6');
                         dicesEnb();
                         getDicesVal(0);
-                        dicesGet();
-                        mmode = 0;
                     }
+                    dicesGet();
                     event.preventDefault();
                 })
                 document.querySelector("#form-button7").addEventListener("click", (event) => {
@@ -111,9 +118,10 @@
                     dicesGet();
                     dicesInfo();
                     document.querySelector("#info3").textContent = getScore();
+                    document.querySelector("#img0").src = ImgChange();
+                    document.querySelector("#myAudio").src = MusicChange();
                     document.querySelector("#form-button6").disabled = showEnb;
                     document.querySelector("#form-button7").disabled = stepEnb;
-                    document.querySelector("#img0").src = ImgChange();
                     event.preventDefault();
                 })
                 document.querySelector("#form-button1").addEventListener("click", (event) => {
@@ -165,6 +173,19 @@
                     document.querySelector("#form-button6").disabled = showEnb;
                     document.querySelector("#form-button7").disabled = stepEnb;
                     event.preventDefault();
+                })
+                document.querySelector("#img2").addEventListener("click", (event) => {
+                    if(playMusic) {
+                        document.querySelector("#img2").src = "./music/volume2.PNG";
+                        document.getElementById("myAudio").play();
+                        document.getElementById("myAudio").volume = 0.6; // [0, 1]
+                        playMusic = false;
+                    } else {
+                        document.querySelector("#img2").src = "./music/volume1.PNG";
+                        document.getElementById("myAudio").pause();
+                        document.getElementById("myAudio").volume = 0.6; // [0, 1]
+                        playMusic = true;
+                    }
                 })
             </script>
     </body>

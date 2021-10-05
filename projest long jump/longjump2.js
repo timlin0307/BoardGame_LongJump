@@ -68,7 +68,7 @@ function getDicesVal(mode) {
             }
         }
     }
-    console.log("dices_fin : ", dices_fin);
+    // console.log("dices_fin : ", dices_fin);
     return dices_str;
 };
 
@@ -93,7 +93,7 @@ function detectFreeze(position) {
                 } else if(dices_sav.reduce(reducer) + dices[result[i] - 1] <= 8 && dices_cnt == 5) {
                     dices_enb[parseInt(result[i], 10) - 1] = true;
                     dices_sav[parseInt(result[i], 10) - 1] = dices[parseInt(result[i], 10) - 1];
-                    infoStr = "You've freezed all five dices!!";
+                    infoStr = "You've freezed all 5 dices!!";
                     warnStr = "Run-up time finished, plz go to next step!!"
                     nextStep = 1;
                     stepEnb = false;
@@ -104,7 +104,7 @@ function detectFreeze(position) {
                         dices[i] = 0;
                     }
                     dices_cnt -= 1;
-                    infoStr = "You've freezed total over eight!!";
+                    infoStr = "You've freezed total over 8!!";
                     warnStr = "Run-up time finished, plz go to next step!!"
                     nextStep = 1;
                     stepEnb = false;
@@ -145,8 +145,8 @@ function detectFreeze(position) {
     // alert('fooish.com');
     // console.log(dices_cnt);
     // console.log("result : ", result);
-    console.log("dices_enb : ", dices_enb);
-    console.log("dices : ", dices);
+    // console.log("dices_enb : ", dices_enb);
+    // console.log("dices : ", dices);
     // console.log("dices_sav : ", dices_sav);
     return result;
 };
@@ -195,7 +195,7 @@ function getScore() {
 function ImgChange() {
     if(nextStep == 0) {
         return "./other/running-man-fat.gif"
-    }else if(nextStep == 1) {
+    } else if(nextStep == 1) {
         return "./other/pool-dive-running-bellyflop.gif";
     } else if(nextStep == 3) {
         if(score >= 20) {
@@ -204,4 +204,14 @@ function ImgChange() {
             return "./other/horny-bonk.gif";
         }
     }
-}
+};
+
+function MusicChange() {
+    if(nextStep == 3) {
+        if(score >= 20) {
+            return "./music/Dance sound.mp3";
+        } else {
+            return "./music/Bonk sound.mp3";
+        }
+    }
+};
