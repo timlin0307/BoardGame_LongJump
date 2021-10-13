@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Reiner Knizia’s Decathlon</title>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+        <link href="before_main.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="./dices/dice-six-faces-0.png" />
+    </head>
+    <body>
+        <div class="main">
+            <label id="info1" for="info">Are you ready to get into the world of "Long-Jump Game"???</label>
+            <audio id="myAudio" loop="loop" style="width:100%">
+                <source src="./music/Pop Cat original.mp3" type="audio/mp3">
+            </audio>
+            <!--<audio src="./music/game music start.mp3" type="audio/mp3"  id="myAudio"></audio>-->
+            <form class="pure-form pure-form-stacked">
+                <fieldset>
+                    <div class="pure-g">
+                        <div class="pure-u-1-2">
+                            <p id="info1">1. Run-up: Start by throwing all five dice. Then freeze at least one die. If you wish, rethrow all the remaining dice. You may rethrow several times, but after each throw, you must freeze at least one more die. Try to freeze many dice with low values. If the total of all frozen dice exceeds 8, you suffer an invalid attempt by stepping over. If you decide to stop throwing with a total of 8 or less on all frozen dice, you then jump.</p>
+                            <p id="info1">2. Jump: Pick up your frozen dice and throw them all. Freeze at least one die and rethrow the remainder. Proceed in this manner until you freeze all dice. Try to freeze dice of high values.</p>
+                            <p id="info1">3. Scoring: Total the value of all frozen dice used in your jump.</p>
+                        </div>
+                        <div class="pure-u-1-2">
+                            <embed id="img1" src="./other/memes-cat.gif" style="display:block;width:440px;height:440px"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <button type="submit" id="load1" class="pure-button pure-button-primary" style='font-size:40px' enabled>Start</button>
+            <button type="submit" id="load2" class="pure-button pure-button-primary" style='font-size:40px' enabled>Ranks</button>
+            <button type="submit" id="load3" class="pure-button pure-button-primary" style='font-size:40px' enabled>Share</button>
+            <img id="img2" src="./music/volume1.PNG" style="display:block;width:50px;height:50px;position:absolute;bottom:0px;right:0px"/>
+            <script src="./back/jump_screen_rank.js"></script>
+            <script src="./back/jump_screen_share.js"></script>
+            <script>
+                var playMusic = true;
+                function music_pp() {
+                    if(playMusic == true) {
+                        document.querySelector("#img2").src = "./music/volume2.PNG";
+                        document.getElementById("myAudio").play();
+                        document.getElementById("myAudio").volume = 1; // [0, 1]
+                        /*document.querySelector("link[rel=import][href='index2.html']").import.querySelector("#img2").src = "./music/volume2.PNG";
+                        document.querySelector("link[rel=import][href='index2.html']").import.getElementById("myAudio").play();
+                        document.querySelector("link[rel=import][href='index2.html']").import.getElementById("myAudio").volume = 0.6;*/
+                        playMusic = false;
+                    } else {
+                        document.querySelector("#img2").src = "./music/volume1.PNG";
+                        document.getElementById("myAudio").pause();
+                        document.getElementById("myAudio").volume = 1; // [0, 1]
+                        /*document.querySelector("link[rel=import][href='index2.html']").import.querySelector("#img2").src = "./music/volume1.PNG";
+                        document.querySelector("link[rel=import][href='index2.html']").import.getElementById("myAudio").pause();
+                        document.querySelector("link[rel=import][href='index2.html']").import.getElementById("myAudio").volume = 0.6;*/
+                        playMusic = true;
+                    }
+                }
+                document.querySelector("#load1").addEventListener("click", (event) => {
+                    window.location.href = "index2.html";
+                })
+                document.querySelector("#load2").addEventListener("click", (event) => {
+                    fetch("/api/read")
+                    .then(response => response.json())
+                    .then(data => {
+                        // console.log(data);
+                        var c = 0;
+                        for(var k  = 0; k < 10; k++) {
+                            namee[k] = "";
+                            score[k] = "0";
+                        }
+                        for(const message of data) {
+                            namee[c] = message.pseudo;
+                            score[c] = message.score;
+                            c++;
+                        }
+                        new MyLayer1({
+                            top: "10%",
+                            left: "30%",
+                            width: "40%",
+                            height: "80%",
+                            title: "🔥🔥  R。A。N。K。S  🔥🔥",
+                            content: ""
+                        }).openLayer();
+                    })
+                })
+                document.querySelector("#load3").addEventListener("click", (event) => {
+                    new MyLayer2({
+                        top: "20%",
+                        left: "36%",
+                        width: "30%",
+                        height: "60%",
+                        title: "🧊🧊  S。H。A。R。E  🧊🧊",
+                        content: ""
+                    }).openLayer();
+                })
+                document.querySelector("#img2").addEventListener("click", (event) => {
+                    music_pp();
+                })
+            </script>
+    </body>
+</html>

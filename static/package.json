@@ -1,0 +1,11 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "partie statique du site",
+  "main": "before_index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "YTL et YC",
+  "license": "ISC"
+}
