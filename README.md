@@ -1,2 +1,2 @@
-# Reiner-Knizia-s-Decathlon-Long-Jump
-ECM 2A Info1 Serveur Web Projet
+# Reiner Knizia's Decathlon : Long Jump
+Le projet de cours Info-1 Serveur Web à Ecole Centrale Marseille 2A
